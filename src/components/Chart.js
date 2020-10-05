@@ -1,5 +1,57 @@
 import React, { Component } from 'react';
-import { Bar, Line, Pie } from "react-chartjs-2"
+import { Bar, Line, Pie } from "react-chartjs-2";
+import moment from "moment"
+moment.locale('pt-BR');
+var b = new Date();
+var mes =b.getMonth()
+var ano = b.getFullYear()
+
+if (mes == 0) {
+    mes = 12
+} 
+
+switch (mes) {
+    case 1:
+        mes = "Janeiro"
+        break;
+    case 2:
+        mes = "Fevereiro"
+        break;
+    case 3:
+        mes = "Março"
+        break;
+    case 4:
+        mes = "Abril"
+        break;
+    case 5:
+        mes = "Maio"
+        break;
+    case 6:
+        mes = "Junho"
+            break;    
+    case 7:
+        mes = "Julho"
+        break;
+    case 8:
+        mes = "Agosto"
+        break;
+    case 9:
+        mes = "Setembro"
+        break;
+    case 10:
+        mes = "Outubro"
+        break;
+    case 11:
+        mes = "Novembro"
+        break;
+    case 12:
+        mes = "Dezembro"
+            break;    
+
+    default:
+        break;
+}
+
 
 class Chart extends Component {
     constructor(props){
@@ -31,7 +83,28 @@ class Chart extends Component {
                     borderWidth: 1
                 }]
 
-            }
+            },
+            chartData2:
+                {
+                    labels: ['2000', '2001', '2002', '2003', '2004', '2005'],
+                                
+                    datasets: [
+                        {
+                            label: 'Crecimento Populacional',
+                            data: [173448346, 175885229, 178276128, 180619108, 182911487, 185150806],
+                           backgroundColor: "transparent",
+                            borderColor: "#36A2EB"
+                        },
+                        {
+                            label: 'Exemplo de Gráfico Comparativo',
+                            data: [173448346, 185150806, 175885229, 182911487, 178276128, 180619108],
+                            backgroundColor: "transparent",
+                            borderColor: "#FF6384"
+                        }
+            
+                    ]
+                }
+            
         }
     }
 
@@ -39,19 +112,21 @@ class Chart extends Component {
     static defaultProps = {
         displayTitle: true,
         displayLegend: true,
-        legendPosition: "right"
+        legendPosition: "right",
+        location: "Params",
     }
     render() {
         return (
-            <div className="chart">
+            <>
+            <div>
                 <Bar
                     data={this.state.chartData}
-                    // width={100}
-                    // height={50}
+                width={100}
+                 height={400}
                     options={{ maintainAspectRatio: false,
                         title:{
                                display: this.props.displayTitle,
-                               text: "Grafic XX",
+                               text: "Grafic I",
                                fontSize: 16
                         },
                         legend:{
@@ -63,7 +138,55 @@ class Chart extends Component {
                             
                 }
                 />
+                 </div>
+            <hr></hr>
+            <div >
+                <Pie
+                    data={this.state.chartData}
+                    width={100}
+                     height={400}
+                    options={{ maintainAspectRatio: false,
+                        title:{
+                               display: this.props.displayTitle,
+                               text: "Grafic II",
+                               fontSize: 16
+                        },
+                        legend:{
+                            display:this.props.displayLegend,
+                            position: this.props.legendPosition,
+                            
+                        }
+                    }
+                            
+                }
+                />
+
+
+
             </div>
+            <hr></hr>
+            <div>
+                <Line
+                    data={this.state.chartData2}
+                width={100}
+                 height={400}
+                    options={{ maintainAspectRatio: false,
+                        title:{
+                               display: this.props.displayTitle,
+                               text: `Gráfico ${mes} de ${ano} (Último mês)`,
+                               fontSize: 16
+                        },
+                        legend:{
+                            display:this.props.displayLegend,
+                            position: this.props.legendPosition,
+                            
+                        }
+                    }
+                            
+                }
+                />
+                 </div>
+            </>
 
         )
     }

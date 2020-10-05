@@ -80,7 +80,7 @@ class App extends Component {
     return (
       <>
      {/* <Contacts contacts={this.state.contacts} />  */}
-      <Chart/>
+      <Chart chartData={this.state.chartData} location="Param1" legendPosition="bottom"/>
       </>
     )
   }
