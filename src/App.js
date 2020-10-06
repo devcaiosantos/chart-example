@@ -23,6 +23,8 @@ class App extends Component {
 
   getChartData(){
 
+    
+
     this.setState({
       chartData:{
         labels:['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
