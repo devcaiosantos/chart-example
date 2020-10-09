@@ -88,7 +88,7 @@ const NewChart = () => {
        
 
     };
-    getDtCad()
+   getDtCad()
   };
   
 
@@ -96,14 +96,12 @@ const NewChart = () => {
     chart();
   }, []);
   return (
-    
+     
       <Grid container direction="column"
                 justify="center"
                 alignItems="center" spacing={1}>
-
-
                  <Grid container item xs={12} sm={12} md={12} lg={12} xl={12} >
-     
+      
         <HorizontalBar
           data={chartData}
          width={100}
@@ -130,7 +128,7 @@ const NewChart = () => {
                   {
                     ticks: {
                       //autoSkip: true,
-                      maxTicksLimit: 200,
+                      //maxTicksLimit: 200,
                       beginAtZero: true,
                     },
                     gridLines: {
